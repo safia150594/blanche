@@ -1,0 +1,187 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: "Brown Std";
+    src: url("../font/BrownStd-Bold.woff2") format("woff2"), url("./assets/font/BrownStd-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Brown Std";
+    src: url("../font/BrownStd-Regular.woff2") format("woff2"), url("./assets/font/BrownStd-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Brown Std";
+    src: url("../font/BrownStd-Light.woff2") format("woff2"), url("./assets/font/BrownStd-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    color: #737373;
+    font-size: 14px;
+    font-family: "Brown Std";
+}
+
+
+/* header   */
+
+.header a.blanche-menu {
+    padding: 17px 30px;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 30px;
+    color: #737373;
+    font-family: "Brown Std";
+    text-align: right;
+}
+
+.header .la {
+    font-size: 20px;
+}
+
+.logo {
+    width: auto;
+    height: 70px;
+    background-color: #ffffff;
+}
+
+
+/* footer  */
+
+.footer .la {
+    font-size: 20px;
+}
+
+.footer .lab {
+    font-size: 32px;
+    margin: 10px;
+    color: #989898;
+}
+
+.footer-heading {
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.footer {
+    line-height: 2;
+}
+
+.footer p {
+    margin-bottom: 0rem;
+    color: #bebebe;
+}
+
+#basic-addon2,
+.form-control.rounded-0 {
+    font-size: 12px;
+}
+
+.copyright {
+    color: #bebebe;
+}
+
+.footer a,
+.footer .input-group-append {
+    cursor: pointer;
+}
+
+
+/* body */
+
+.superSoft {
+    height: 189px;
+    font-size: 35px !important;
+    line-height: 37px;
+    color: #737373;
+    font-weight: 300;
+    margin-top: 190px;
+    font-family: "Brown Std";
+}
+
+.superSoft h4 {
+    font-size: 35px !important;
+    font-family: serif;
+}
+
+.banner-content {
+    height: 750px;
+    overflow: hidden;
+}
+
+.explore {
+    width: 100%;
+    text-align: center;
+    bottom: -49px;
+    color: #737373;
+}
+
+.explore .vertical-line {
+    width: 2px;
+    background: #737373;
+    height: 130px;
+    bottom: 90px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.premium {
+    padding: 30px 10px;
+    width: 740px;
+    font-size: 20px;
+    line-height: 48px;
+    color: #494949;
+    font-weight: 500;
+    font-family: "Big Caslon";
+    margin: 0 auto;
+}
+
+.shop-bath-item img {
+    height: 484px;
+}
+
+.shop-label {
+    bottom: 60px;
+}
+
+.shop-label div {
+    font-size: 13px;
+    line-height: 20px;
+    color: #737373;
+    font-family: "Brown Std";
+    text-align: right;
+    background: #ffffff;
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.bleach-home .bg-gray {
+    background-color: #f6f6f6;
+}
+
+.bleach-home .la,
+.bleach-home .lab {
+    font-size: 20px;
+}
+
+.bleach-home .slider {
+    height: 320px;
+    overflow: hidden;
+}
+
+p.cool {
+    padding: 64px 20px;
+    font-size: 32px;
+    color: #303030;
+    font-weight: lighter;
+}
