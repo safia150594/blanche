@@ -1,0 +1,172 @@
+<!Document HTML>
+<html>
+	<head>
+	<title>Task2</title>
+		  <meta charset="utf-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1">
+		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<style>
+		.bdypt{
+			padding-top: 80px;
+			}
+		input{
+		    background-color: #dcdce1!important;
+			}
+		.error{
+				color:red;
+				}
+		</style>
+	</head>
+	<body >
+		<div class="w-50 m-auto bdypt">
+			<h3 class="text-md-center">Employee allowances</h3>
+			<form>
+			<div class="form-group row">
+				<label for="ID" class="col-sm-4 col-form-label">ID</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="ID" name="ID" >
+					<div id="erID" class="error"></div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="name" class="col-sm-4 col-form-label">Name</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="name" name="name" >
+				  <div id="erName" class="error"></div>
+				</div>
+		    </div>
+			<div class="form-group row">
+				<label for="Salary" class="col-sm-4 col-form-label">Salary</label>
+				<div class="col-sm-8">
+				  <input type="number" class="form-control" id="Salary" name="Salary" >
+				  <div id="erSalary" class="error"></div>
+				</div>
+		  </div>
+		  <div class="form-group row">
+			<button type="submit" class="col-sm-4 col-form-label" onclick="Cancel(event)" id="find">Cancel</button>
+			<div class="col-sm-8">
+			 <button type="submit" class="col-sm-4 col-form-label" onclick="validate(event)" id="Find">Find</button>
+			</div>
+		  </div>
+			<div class="form-group row">
+				<label for="House" class="col-sm-4 col-form-label">House rent allowance</label>
+				<div class="col-sm-8">
+					<label name="House" class="form-control" id="House"></label>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="Dearness" class="col-sm-4 col-form-label">Dearness allowance</label>
+				<div class="col-sm-8">
+					<label name="Dearness" class="form-control" id="Dearness"></label>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="Provident" class="col-sm-4 col-form-label">Provident fund</label>
+				<div class="col-sm-8">
+					<label name="Provident" class="form-control" id="Provident"></label>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="Gross" class="col-sm-4 col-form-label">Gross pay</label>
+				<div class="col-sm-8">
+					<label name="Gross" class="form-control" id="Gross"></label>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="Net" class="col-sm-4 col-form-label">Net pay</label>
+				<div class="col-sm-8">
+					<label name="Net" class="form-control" id="Net"></label>
+				</div>
+			</div>
+			</form>
+			<script>
+				function Cancel(event){
+						event.preventDefault();
+						console.log(document.getElementById('erID').value="")
+						document.getElementById('ID').value="";
+						document.getElementById('erID').innerHTML="";
+						document.getElementById('name').value="";
+						document.getElementById('erName').innerHTML="";
+						document.getElementById('Salary').value="";
+						document.getElementById('erSalary').innerHTML="";
+						document.getElementById('House').innerHTML="";
+						document.getElementById('Dearness').innerHTML="";
+						document.getElementById('Provident').innerHTML="";
+						document.getElementById('Gross').innerHTML="";
+						document.getElementById('Net').innerHTML="";
+						
+				}
+				function validate(event){
+							event.preventDefault();
+							var isValid=true;
+							var IDValid="^[0-9]{3,3}$";
+							var ID=document.getElementById('ID').value;
+							var errorID="";
+							
+							var name=document.getElementById('name').value;
+							var errorName="";
+							var alphbet="[a-zA-Z]";
+							
+							var Salary=document.getElementById('Salary').value;
+							var errorSalary="";
+							
+							if(ID==''){
+								isValid=false;
+								errorID="Field is Empty";
+							}							
+							else if(isNaN(ID)){
+								isValid=false;
+								errorID="Field Required Number";
+							}
+							else if(!ID.match(IDValid)){
+								isValid=false;
+								errorID="Entetr 4 Digit number";
+								}
+							
+							if( name==""){
+								isValid=false;
+								errorName="character Field is Required";
+							}else if(!(name.match(alphbet))){
+								isValid=false;
+								errorName="Enter Valid Text";
+							}
+							else if ( name.length<1 || name.length>15){	
+								isValid=false;
+								errorName="Enter 5-15 Character";
+							}
+
+							if (Salary==""){
+								isValid=false;
+								errorSalary="field is empty";
+							}else if(parseInt(Salary)<0){
+								isValid=false;
+								errorSalary="enter mark out of 100";
+							}
+							document.getElementById("erID").innerHTML = errorID;
+							document.getElementById("erName").innerHTML = errorName;
+							document.getElementById("erSalary").innerHTML = errorSalary;
+							
+							if(isValid)
+							{
+								var rent = parseInt(Salary) * (15/100);
+								var Dearness = parseInt(Salary) * (20/100);
+								var Provident = parseInt(Salary) * (35/100);
+								var Gpay= parseInt(Salary)+rent+Dearness;
+								var Npay= Gpay-Provident;
+								document.getElementById('House').innerHTML = rent;
+								document.getElementById('Dearness').innerHTML = Dearness;
+								document.getElementById('Provident').innerHTML = Provident;
+								document.getElementById('Gross').innerHTML = Gpay;
+								document.getElementById('Net').innerHTML = Npay;
+								
+								
+							}
+				}
+						
+			</script>
+		</div>	
+	</body>
+</html>

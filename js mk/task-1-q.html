@@ -1,0 +1,187 @@
+<!Document HTML>
+<html>
+	<head>
+	<title>Task1</title>
+		  <meta charset="utf-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1">
+		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<style>
+		.bdypt{
+			padding-top: 133px;
+			}
+		input{
+		    background-color: #b9b2b2!important;
+			}
+		.error{
+				color:red;
+				}
+		</style>
+	</head>
+	<body >
+	
+		<div class="w-50 m-auto bdypt">
+		<form>
+		  <h2 class="text-md-center">Exam Result</h2>
+		  <div class="form-group row">
+			<label for="RolNo" class="col-sm-2 col-form-label">Roll no.</label>
+			<div class="col-sm-10">
+			  <input type="text" class="form-control" id="RollNo" name="RollNo"  >
+				<div id="erRollNo" class="error"></div>
+			</div>
+		  </div>
+		  <div class="form-group row">
+			<label for="name" class="col-sm-2 col-form-label">Name</label>
+			<div class="col-sm-10">
+			  <input type="text" class="form-control" id="name" name="name" >
+			  <div id="erName" class="error"></div>
+			</div>
+		  </div>
+		  <div class="form-group row">
+			<label for="Mark-1" class="col-sm-2 col-form-label">Mark-1</label>
+			<div class="col-sm-10">
+			  <input type="number" class="form-control" id="MarkOne" name="MarkOne" >
+			  <div id="erMarkOne" class="error"></div>
+			</div>
+		  </div>
+		   <div class="form-group row">
+			<label for="MarkTwo" class="col-sm-2 col-form-label">Mark-2</label>
+			<div class="col-sm-10">
+			  <input type="number" class="form-control" id="MarkTwo" name="MarkTwo" >
+			  <div id="erMarkTwo" class="error"></div>
+			</div>
+		  </div>
+		 
+		  <div class="form-group row">
+			<button type="submit" class="col-sm-2 col-form-label" onclick="Cancel(event)" id="find">Cancel</button>
+			<div class="col-sm-10">
+			 <button type="submit" class="col-md-2 col-form-label" onclick="validate(event)" id="submit">SUBMIT</button>
+			</div>
+		  </div>
+		    <div class="form-group row">
+			<label for="Total" class="col-sm-2 col-form-label">Total</label>
+			<div class="col-sm-10">
+				<label name="Total" id="Total"></label>
+			</div>
+		  </div>
+		  <div class="form-group row">
+			<label for="Avg" class="col-sm-2 col-form-label">Avg</label>
+			<div class="col-sm-10">
+			  <label name="Avg" id="Avg"></label>
+			</div>
+		  </div>
+		  <div class="form-group row">
+			<label for="Result" class="col-sm-2 col-form-label">Result</label>
+			<div class="col-sm-10">
+			<label name="Result" id="Result"></label>
+			</div>
+		  </div>
+		  
+		</form>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<script>
+					var rollno=$('#RollNo').val("1020");
+				function validate(event){
+							event.preventDefault();
+							var isValid=true;
+							var rollNoValid="^[0-9]{4,4}$";
+							var rollno=$('#RollNo').val();
+							var errorRollNo="";
+							
+							var name=$('#name').val();
+							var errorName="";
+							var alphbet="[a-zA-Z]";
+							
+							var markOne=$('#MarkOne').val();
+							var errorMarkOne="";
+							var markTwo=$('#MarkTwo').val();
+							var errorMarkTwo="";
+							
+							
+							
+							if(rollno==''){
+								isValid=false;
+								errorRollNo="Field is Empty";
+							}							
+							else if(isNaN(rollno)){
+								isValid=false;
+								errorRollNo="Field Required Number";
+							}
+							else if(!rollno.match(rollNoValid)){
+								isValid=false;
+								errorRollNo="Entetr 4 Digit number";
+								}
+							
+							if( name==""){
+								isValid=false;
+								errorName="character Field is Required";
+							}else if(!(name.match(alphbet))){
+								isValid=false;
+								errorName="Enter Valid Text";
+							}
+							else if ( name.length<5 || name.length>15){	
+								isValid=false;
+								errorName="Enter 5-15 Character";
+							}
+							
+							if (markOne==""){
+								isValid=false;
+								errorMarkOne="field is empty";
+							}else if(parseInt(markOne)<0 || parseInt(markOne)>100){
+								isValid=false;
+								errorMarkOne="enter mark out of 100";
+							}
+							if (markTwo==""){
+								isValid=false;
+								errorMarkTwo="field is empty";
+							}else if(parseInt(markTwo)<0 || parseInt(markTwo)>100){
+								isValid=false;
+								errorMarkTwo="enter mark out of 100";
+							}
+							
+							
+							$("#erRollNo").html(errorRollNo);
+							$("#erName").html(errorName);
+							$("#erMarkOne").html(errorMarkOne) ;
+							$("#erMarkTwo").html(errorMarkTwo);
+							console.log(markOne+markTwo);
+							if(isValid)
+							{
+							var Total=parseInt(markOne)+parseInt(markTwo);
+							var Avg=parseInt(Total)/2;
+							if(parseInt(markOne)>30 && parseInt(markTwo)>30 )
+							{
+							var	Result="pass";
+							}else{
+								Result="Fail";
+							}
+							$("#Total").html('Total');
+							$("#Avg").html('Avg');
+							$("#Result").html('Result');
+							}
+							
+				}
+					function Cancel(event){
+					event.preventDefault();
+					$('#RollNo').val("");
+					$('#name').val("");
+					$('#MarkOne').val("");
+					$('#MarkTwo').val("");
+					$("#Total").html("");
+					$("#Avg").html("");
+					$("#Result").html("");
+					$("#erRollNo").html("");
+					$("#erName").html("");
+					$("#erMarkOne").html("");
+					$("#erMarkTwo").html("");
+					$("#Total").html("");
+					$("#Avg").html("");
+					$("#Result").html("");
+							
+					}
+			</script>
+		</div>
+	<body>
+</html>

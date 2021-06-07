@@ -1,0 +1,26 @@
+<!DOCUMENT html>
+<html>
+<head>
+</head>
+<body>
+<img src="img/1.jpg" alt="1" width="300px;" id="test" onclick="imageChange()">
+
+<script  type="text/javascript">
+ 
+		function imageChange(){
+			var imagePath = document.getElementById("test").getAttribute('src');
+			if(imagePath=='img/1.jpg'){
+				document.getElementById("test").src="img/2.jpg";
+			}else if(imagePath=='img/2.jpg'){
+					document.getElementById("test").src="img/3.jpg";
+			    }else if(imagePath=='img/3.jpg'){
+					document.getElementById("test").src="img/4.jpg";
+			    }else if(imagePath=='img/4.jpg'){
+					document.getElementById("test").src="img/1.jpg";
+				}else{
+				document.getElementById("test").src="img/1.jpg";
+				}				
+		}
+</script>
+</body>
+</html>

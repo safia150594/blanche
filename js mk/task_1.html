@@ -1,0 +1,185 @@
+<!Document HTML>
+<html>
+	<head>
+	<title>Task1</title>
+		  <meta charset="utf-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1">
+		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<style>
+		.bdypt{
+			padding-top: 133px;
+			}
+		input{
+		    background-color: #b9b2b2!important;
+			}
+		.error{
+				color:red;
+				}
+		</style>
+	</head>
+	<body >
+	
+		<div class="w-50 m-auto bdypt">
+		<form>
+		  <h2 class="text-md-center">Exam Result</h2>
+		  <div class="form-group row">
+			<label for="RolNo" class="col-sm-2 col-form-label">Roll no.</label>
+			<div class="col-sm-10">
+			  <input type="text" class="form-control" id="RollNo" name="RollNo" >
+				<div id="erRollNo" class="error"></div>
+			</div>
+		  </div>
+		  <div class="form-group row">
+			<label for="name" class="col-sm-2 col-form-label">Name</label>
+			<div class="col-sm-10">
+			  <input type="text" class="form-control" id="name" name="name" >
+			  <div id="erName" class="error"></div>
+			</div>
+		  </div>
+		  <div class="form-group row">
+			<label for="Mark-1" class="col-sm-2 col-form-label">Mark-1</label>
+			<div class="col-sm-10">
+			  <input type="number" class="form-control" id="MarkOne" name="MarkOne" >
+			  <div id="erMarkOne" class="error"></div>
+			</div>
+		  </div>
+		   <div class="form-group row">
+			<label for="MarkTwo" class="col-sm-2 col-form-label">Mark-2</label>
+			<div class="col-sm-10">
+			  <input type="number" class="form-control" id="MarkTwo" name="MarkTwo" >
+			  <div id="erMarkTwo" class="error"></div>
+			</div>
+		  </div>
+		 
+		  <div class="form-group row">
+			<button type="submit" class="col-sm-2 col-form-label" onclick="Cancel(event)" id="find">Cancel</button>
+			<div class="col-sm-10">
+			 <button type="submit" class="col-md-2 col-form-label" onclick="validate(event)" id="submit">SUBMIT</button>
+			</div>
+		  </div>
+		    <div class="form-group row">
+			<label for="Total" class="col-sm-2 col-form-label">Total</label>
+			<div class="col-sm-10">
+				<label name="Total" id="Total"></label>
+			</div>
+		  </div>
+		  <div class="form-group row">
+			<label for="Avg" class="col-sm-2 col-form-label">Avg</label>
+			<div class="col-sm-10">
+			  <label name="Avg" id="Avg"></label>
+			</div>
+		  </div>
+		  <div class="form-group row">
+			<label for="Result" class="col-sm-2 col-form-label">Result</label>
+			<div class="col-sm-10">
+			<label name="Result" id="Result"></label>
+			</div>
+		  </div>
+		  
+		</form>
+			<script>
+				function validate(event){
+							event.preventDefault();
+							var isValid=true;
+							var rollNoValid="^[0-9]{4,4}$";
+							var rollno=document.getElementById('RollNo').value;
+							var errorRollNo="";
+							
+							var name=document.getElementById('name').value;
+							var errorName="";
+							var alphbet="[a-zA-Z]";
+							
+							var markOne=document.getElementById('MarkOne').value;
+							var errorMarkOne="";
+							var markTwo=document.getElementById('MarkTwo').value;
+							var errorMarkTwo="";
+							
+							
+							
+							if(rollno==''){
+								isValid=false;
+								errorRollNo="Enter yout roll no";
+							}							
+							else if(isNaN(rollno)){
+								isValid=false;
+								errorRollNo="Enter your number";
+							}
+							else if(!rollno.match(rollNoValid)){
+								isValid=false;
+								errorRollNo="Entetr 4 Digit number";
+								}
+							
+							if( name==""){
+								isValid=false;
+								errorName="character Field is Required";
+							}else if(!(name.match(alphbet))){
+								isValid=false;
+								errorName="Enter Valid Text";
+							}
+							else if ( name.length<5 || name.length>15){	
+								isValid=false;
+								errorName="Enter 5-15 Character";
+							}
+							
+							if (markOne==""){
+								isValid=false;
+								errorMarkOne="field is empty";
+							}else if(parseInt(markOne)<0 || parseInt(markOne)>100){
+								isValid=false;
+								errorMarkOne="enter mark out of 100";
+							}
+							if (markTwo==""){
+								isValid=false;
+								errorMarkTwo="field is empty";
+							}else if(parseInt(markTwo)<0 || parseInt(markTwo)>100){
+								isValid=false;
+								errorMarkTwo="enter mark out of 100";
+							}
+							
+							
+							document.getElementById("erRollNo").innerHTML = errorRollNo;
+							document.getElementById("erName").innerHTML = errorName;
+							document.getElementById("erMarkOne").innerHTML = errorMarkOne;
+							document.getElementById("erMarkTwo").innerHTML = errorMarkTwo;
+							console.log(markOne+markTwo);
+							if(isValid)
+							{
+							var Total=parseInt(markOne)+parseInt(markTwo);
+							var Avg=parseInt(Total)/2;
+							if(parseInt(markOne)>30 && parseInt(markTwo)>30 )
+							{
+							var	Result="pass";
+							}else{
+								Result="Fail";
+							}
+							document.getElementById("Total").innerHTML=Total;
+							document.getElementById("Avg").innerHTML=Avg;
+							document.getElementById("Result").innerHTML=Result;
+							}
+							
+				}
+					function Cancel(event){
+					event.preventDefault();
+					document.getElementById('RollNo').value="";
+					document.getElementById('name').value="";
+					document.getElementById('MarkOne').value="";
+					document.getElementById('MarkTwo').value="";
+					document.getElementById("Total").innerHTML="";
+					document.getElementById("Avg").innerHTML="";
+					document.getElementById("Result").innerHTML="";
+					document.getElementById("erRollNo").innerHTML = "";
+					document.getElementById("erName").innerHTML = "";
+					document.getElementById("erMarkOne").innerHTML = "";
+					document.getElementById("erMarkTwo").innerHTML = "";
+					document.getElementById("Total").innerHTML="";
+					document.getElementById("Avg").innerHTML="";
+					document.getElementById("Result").innerHTML="";
+							
+					}
+			</script>
+		</div>
+	<body>
+</html>

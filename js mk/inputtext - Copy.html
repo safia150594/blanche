@@ -1,0 +1,59 @@
+<!DOCUMENT html>
+<html>
+<head>
+</head>
+<body>
+	<form>
+		<label for="fname">Name</label><br>
+		<input type="text" name="fname" id='firstname'><br>
+		<span id="ername"></span><br>
+		<label for="fpswd">Password</label><br>
+		<input type="password" name="fpswd" id='password'><br>
+		<span id="erpswd"></span><br>
+		<button type="submit" onclick="validate(event)" id="submit">SUBMIT</button><br>
+		
+	</form>
+	<script>
+			function validate(event){
+					event.preventDefault();
+					var isValid=true;
+					var nameErr="";
+					var pswdErr="";
+					console.log(document.getElementById('firstname'))					
+					var name=document.getElementById('firstname').value;
+					var password=document.getElementById('password').value;
+					
+					if( name=="")
+					{
+						isValid=false;
+						nameErr="Name field is required";
+					}else if ( name.length<5 || name.length>15)
+					{	
+						isValid=false;
+						nameErr="enter 5-15 character";
+					}
+					
+					if(password=="")
+					{
+						isValid=false;
+						pswdErr="Password field is required";
+					}else if ( password.length<5 || password.length>8)
+					{
+						isValid=false;
+						pswdErr="Password character must have5-8 character";
+					}
+					
+					
+					document.getElementById("ername").innerHTML=nameErr;
+					document.getElementById("erpswd").innerHTML=pswdErr;
+					
+					if(isValid)
+					{
+					alert("submitted");					
+					}
+					
+			}
+	</script>
+	
+</body>
+</html>

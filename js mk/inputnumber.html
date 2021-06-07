@@ -1,0 +1,42 @@
+<!DOCUENT html>
+<html>
+<head>
+</head>
+	<body id="changebg">
+		<form>
+			<input type="text" id="perform" ></input>
+			<button type="submit" onclick="checknumber(event)">submit</button>
+			<p id="demo"></p>
+		</form>
+		<script>
+				function checknumber(event){
+				event.preventDefault();
+					var phoneno="^[0-9]{6,6}$";
+					var text;
+					var x=document.getElementById('perform').value;
+					console.log(x);
+					console.log(isNaN(x));
+					console.log(x.match(phoneno));
+					console.log(text);
+					text="";
+						if(x=='')
+							{
+								text="it is empty";
+							}
+							
+						else if(isNaN(x))
+						{
+							text="is not a numbr";
+							}
+						else if(x.match(phoneno)){
+							document.getElementById("changebg").style.backgroundColor="blue"
+							
+						}else{
+						    text="number is not 6 digit";
+						}
+						document.getElementById("demo").innerHTML = text;
+							
+					}
+		</script>
+	</body>
+</html>

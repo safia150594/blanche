@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<label for="myCheck">Checkbox:</label> 
+<input type="checkbox" id="myCheck" ><br>
+
+<p id="text" style="display:none">click check box</p>
+<button type="submit" onclick="myFunction(event)" id='submit'>submit</button>
+<script>
+function myFunction() {
+  var checkBox = document.getElementById("myCheck");
+  var text = document.getElementById("text");
+  if (checkBox.checked == true){
+    text.style.display = "none";
+      alert('submit');
+  } else {
+     text.style.display = "block";
+     
+  }
+}
+</script>
+
+</body>
+</html>
